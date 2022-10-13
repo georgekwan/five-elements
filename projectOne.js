@@ -1,15 +1,11 @@
 import rl from "readline-sync";
 ("use strict");
 const yesNo = ["y", "n"];
-console.log("test");
 function gameStart(playGame) {
-  console.log("\n----------------\nThe commands are:", yesNo);
-  const playGame = rl.question(
-    "are you ready for an adventure? (y/n)",
-    playGame
-  );
+  console.log("\n----------------\nThe commands are (y)es or (n)o:", yesNo);
+  const startAdven = rl.question("are you ready for an adventure? (y/n) ");
   console.log("\n");
-  if (playGame === "y") {
+  if (startAdven === "y") {
     console.log(
       "You awoke at home, but your mother was not to be seen, and you are concerned for her since you are hungry."
     );
@@ -21,7 +17,7 @@ function gameStart(playGame) {
     console.log(
       `Because your mom has gone missing, you've chosen to walk into the wilderness and look for her.`
     );
-  } else if (playGame === "n") {
+  } else if (startAdven === "n") {
     // need to add something after answered no
     return;
   } else {
@@ -33,9 +29,10 @@ function enterForest(eatMush) {
   console.log(
     `You spotted a nice-looking mushroom not long after entering the wilderness, and you're starving.`
   );
-  console.log("Are you going to eat it? (y/n)", eatMush);
+  console.log("\n----------------\nThe commands are (y)es or (n)o:", yesNo);
+  const eatIt = rl.question("Are you going to eat it? (y/n) ");
   console.log("\n");
-  if (eatMush === "y") {
+  if (eatIt === "y") {
     console.log(
       `You weren't feeling well, so you opted to relax behind a massive tree.`
     );
@@ -49,9 +46,10 @@ function enterForest(eatMush) {
   }
 }
 
-function massiveTree(doorKnock) {
+function massiveTree(crimsonDoor) {
   console.log(`So you went to have a peek and discovered a crimson door.`);
-  console.log("Do you want to knock? (y/n)", doorKnock);
+  console.log("\n----------------\nThe commands are (y)es or (n)o:", yesNo);
+  const doorKnock = rl.question("Do you want to knock? (y/n) ");
   if (doorKnock === "y") {
     console.log("You knocked but no one answered.");
     console.log("\n");
@@ -74,6 +72,15 @@ function massiveTree(doorKnock) {
   }
 }
 
-console.log(gameStart("n"));
-console.log(enterForest("y"));
-console.log(massiveTree("y"));
+// console.log(gameStart("y"));
+// console.log(enterForest("y"));
+// console.log(massiveTree("y"));
+
+// This needs to be fix
+function chubAdven() {
+  console.log("Welcome");
+  gameStart();
+  enterForest();
+  massiveTree();
+  console.log("The end");
+}
