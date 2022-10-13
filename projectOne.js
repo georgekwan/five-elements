@@ -1,73 +1,86 @@
 import rl from "readline-sync";
 ("use strict");
+
 const yesNo = ["y", "n"];
 function gameStart(playGame) {
   console.log("\n----------------\nThe commands are (y)es or (n)o:", yesNo);
-  const startAdven = rl.question("are you ready for an adventure? (y/n) ");
-  console.log("\n");
-  if (startAdven === "y") {
-    console.log(
-      "You awoke at home, but your mother was not to be seen, and you are concerned for her since you are hungry."
-    );
-    console.log("\n");
-    console.log(
-      "So you decided to walk outdoors and look around for your mom."
-    );
-    console.log("\n");
-    console.log(
-      `Because your mom has gone missing, you've chosen to walk into the wilderness and look for her.`
-    );
-  } else if (startAdven === "n") {
-    // need to add something after answered no
-    return;
-  } else {
-    console.log("Invalid input! Please enter (y)es or (n)o.");
+  playGame = rl.question("are you ready for an adventure? (y/n) ");
+  while (playGame != "y") {
+    if (playGame === "y") {
+      break;
+    } else if (playGame === "n") {
+      console.log(
+        "\n----------------\nPlease enter (y)es when you are ready.:",
+        yesNo
+      );
+      playGame = rl.question("are you ready for an adventure? (y/n) ");
+    } else {
+      console.log("Come on!!! Is it that hard to enter (y)es or (n)o?", yesNo);
+      playGame = rl.question("Now... are you ready for an adventure?! (y/n) ");
+    }
   }
+  console.log(
+    "\nYou are a bichon shih tzu. You enjoy sleeping and eating on a daily basis. Your mother always says you're fearless and enjoy adventure, but the only places you've been are around the neighbourhood and the off-leash park. But one day everything changes..."
+  );
+}
+
+function lookMom() {
+  console.log(
+    "\nYou awoke at home, but your mother was not to be seen, and you are concerned for her since you are hungry."
+  );
+  console.log(
+    "\nSo you decided to walk outdoors and look around for your mom."
+  );
+  console.log(
+    "\nBecause your mom has gone missing, you've chosen to walk into the wilderness and look for her."
+  );
 }
 
 function enterForest(eatMush) {
   console.log(
-    `You spotted a nice-looking mushroom not long after entering the wilderness, and you're starving.`
+    "\nYou spotted a nice-looking mushroom not long after entering the wilderness, and you're starving."
   );
   console.log("\n----------------\nThe commands are (y)es or (n)o:", yesNo);
-  const eatIt = rl.question("Are you going to eat it? (y/n) ");
+  eatMush = rl.question("Are you going to eat it? (y/n) ");
   console.log("\n");
-  if (eatIt === "y") {
-    console.log(
-      `You weren't feeling well, so you opted to relax behind a massive tree.`
-    );
-    console.log("\n");
-    console.log(
-      `You see something on the other side of the tree as you get closer to it.`
-    );
-    console.log("\n");
-  } else {
-    console.log("Taking a look around");
+  while (eatMush != "y") {
+    if (eatMush === "y") {
+      console.log(
+        "\nYou weren't feeling well, so you opted to relax behind a massive tree."
+      );
+      console.log(
+        "\nYou see something on the other side of the tree as you get closer to it."
+      );
+      break;
+    } else {
+      console.log("\nTaking a look around");
+      // this part needs to connect to "You choose to ignore it by taking a nap."
+      massiveTree;
+    }
   }
 }
 
 function massiveTree(crimsonDoor) {
-  console.log(`So you went to have a peek and discovered a crimson door.`);
+  console.log("\nSo you went to have a peek and discovered a crimson door.");
   console.log("\n----------------\nThe commands are (y)es or (n)o:", yesNo);
-  const doorKnock = rl.question("Do you want to knock? (y/n) ");
-  if (doorKnock === "y") {
-    console.log("You knocked but no one answered.");
-    console.log("\n");
+  crimsonDoor = rl.question("Do you want to knock? (y/n) ");
+  if (crimsonDoor === "y") {
+    console.log("\nYou knocked but no one answered.");
     console.log(
-      "There is a strong blast of wind and thunder. It appears that a storm is on the way."
+      "\nThere is a strong blast of wind and thunder. It appears that a storm is on the way."
     );
-    console.log("\n");
-    console.log("You are scare, so you are attempting to open the door.");
+    console.log("\nYou are scare, so you are attempting to open the door.");
+    // undefined issue
     console.log(
-      "And because the door was not secured, you chose to enter, expecting that the storm would pass quickly."
+      "\nAnd because the door was not secured, you chose to enter, expecting that the storm would pass quickly."
     );
   } else {
-    console.log("You choose to ignore it by taking a nap.");
-    console.log("\n");
-    console.log("You went home after taking a dump at your favourite spot.");
-    console.log("\n");
+    console.log("\nYou choose to ignore it by taking a nap.");
+
+    console.log("\nYou went home after taking a dump at your favourite spot.");
+
     console.log(
-      "You take another nap, hoping your mother will return to feed you."
+      "\nYou take another nap, hoping your mother will return to feed you."
     );
   }
 }
@@ -77,10 +90,17 @@ function massiveTree(crimsonDoor) {
 // console.log(massiveTree("y"));
 
 // This needs to be fix
-function chubAdven() {
-  console.log("Welcome");
-  gameStart();
-  enterForest();
-  massiveTree();
-  console.log("The end");
+function chubAdven(playGame, eatMush, crimsonDoor) {
+  while (true) {
+    console.log("Welcome");
+    gameStart(playGame);
+    lookMom();
+    enterForest(eatMush);
+    massiveTree(crimsonDoor);
+    console.log("The end");
+    break;
+  }
+  return;
 }
+
+chubAdven();
