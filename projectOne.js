@@ -13,7 +13,7 @@ function gameStart(playGame) {
       console.log("\n----------------\nPlease enter (y)es when you are ready.");
       playGame = rl.question("Are you ready for an adventure? (y/n) ");
     } else {
-      console.log("Come on!!! Is it that hard to enter (y)es or (n)o?");
+      console.log("\nCome on!!! Is it that hard to enter (y)es or (n)o?");
       playGame = rl.question("Now... are you ready for an adventure?! (y/n) ");
     }
   }
@@ -43,7 +43,7 @@ function enterForest(eatMush) {
       crimsonDoor = "n";
       break;
     } else {
-      console.log("Hey little buddy, make up your mind!!! (y)es or (n)o?");
+      console.log("\nHey little buddy, make up your mind!!! (y)es or (n)o?");
       eatMush = rl.question("Are you eating that beautiful mushroom?! (y/n) ");
     }
   }
@@ -55,8 +55,9 @@ function enterForest(eatMush) {
 function massiveTree(crimsonDoor) {
   console.log("\nSo you went to have a peek and discovered a crimson door.");
   console.log("\n----------------\nThe commands are (y)es or (n)o");
-  crimsonDoor = rl.question("\nDo you want to knock? (y/n) ");
-  while (crimsonDoor === "y") {
+  crimsonDoor = rl.question("Do you want to knock? (y/n) ");
+  // need to be fixed
+  while (crimsonDoor != "y") {
     if (crimsonDoor === "y") {
       console.log(
         "\nYou knocked but no one answered.\n\nThere is a strong blast of wind and thunder. It appears that a storm is on the way.\n\nYou are scare, so you are attempting to open the door\n\nAnd because the door was not secured, you chose to enter, expecting that the storm would pass quickly."
@@ -68,9 +69,14 @@ function massiveTree(crimsonDoor) {
       console.log(
         "\nYou choose to ignore it by taking a nap.\n\nYou went home after taking a dump at your favourite spot.\n\nYou take another nap, hoping your mother will return to feed you."
       );
+      return lookMom();
+
+      // this needs to return to the beginning
     } else {
-      console.log("Come on!!! Is it that hard to enter (y)es or (n)o?");
-      crimsonDoor = rl.question("Are you going to knock on the door?! (y/n) ");
+      console.log("\nCome on!!! Is it that hard to enter (y)es or (n)o?");
+      crimsonDoor = rl.question(
+        "\nAre you going to knock on the door?! (y/n) "
+      );
     }
   }
 }
@@ -90,7 +96,7 @@ function caveEntry(goRight) {
       break;
     } else {
       console.log(
-        "Come on!!! Do you know where you are going? Pick (r)ight or (l)eft"
+        "\nCome on!!! Do you know where you are going? Pick (r)ight or (l)eft"
       );
       goRight = rl.question("Make up your mind! (r/l) ");
     }
