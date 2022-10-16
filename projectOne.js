@@ -62,7 +62,6 @@ function massiveTree(crimsonDoor) {
       );
     }
   }
-
   if (crimsonDoor === "y") {
     console.log(
       "\nYou knocked but no one answered.\n\nThere is a strong blast of wind and thunder. It appears that a storm is on the way.\n\nYou are scare, so you are attempting to open the door\n\nAnd because the door was not secured, you chose to enter, expecting that the storm would pass quickly."
@@ -85,21 +84,20 @@ function caveEntry(goRight) {
     "\nShould you go right and follow the music or go left? (r/l) "
   );
   while (goRight != "r" && goRight != "l") {
-    if (goRight === "r") {
-      break;
-    } else if (goRight === "l") {
-      console.log(
-        "\nThis path is tedious since there is no music and it is dark. You came to a dead end.\n\nHold on... you see something on the wall. Someone engraved “A89C90” upside down. What does that mean?\n\nIt's most likely nothing, so you turn around and decide to pursue the correct path."
-      );
-      break;
-    } else {
+    if (goRight != "r" && goRight != "l") {
       console.log(
         "\nCome on!!! Do you know where you are going? Pick (r)ight or (l)eft"
       );
       goRight = rl.question("Make up your mind! (r/l) ");
     }
   }
-  console.log("\nYou chose to take the path where the music is playing.");
+  if (goRight === "y") {
+    console.log("\nYou chose to take the path where the music is playing.");
+  } else {
+    console.log(
+      "\nThis path is tedious since there is no music and it is dark. You came to a dead end.\n\nHold on... you see something on the wall. Someone engraved “A89C90” upside down. What does that mean?\n\nIt's most likely nothing, so you turn around and decide to pursue the correct path."
+    );
+  }
 }
 // console.log(gameStart("y"));
 // console.log(enterForest("y"));
