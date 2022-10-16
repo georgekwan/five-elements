@@ -69,7 +69,6 @@ function massiveTree(crimsonDoor) {
       console.log(
         "\nYou choose to ignore it by taking a nap.\n\nYou went home after taking a dump at your favourite spot.\n\nYou take another nap, hoping your mother will return to feed you."
       );
-      return lookMom();
 
       // this needs to return to the beginning
     } else {
