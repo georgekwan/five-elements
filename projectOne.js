@@ -7,9 +7,7 @@ function gameStart(playGame) {
     "\nAre you ready for to go on an adventure as Chubby? (y/n) "
   );
   while (playGame != "y") {
-    if (playGame === "y") {
-      break;
-    } else if (playGame === "n") {
+    if (playGame === "n") {
       console.log("\n----------------\nPlease enter (y)es when you are ready.");
       playGame = rl.question("Are you ready for an adventure? (y/n) ");
     } else {
