@@ -25,7 +25,7 @@ function lookMom() {
     "\nYou awoke at home, but your mother was not to be seen, and you are concerned for her since you are hungry.\n\nSo you decided to walk outdoors and look around for your mom.\n\nBecause your mom has gone missing, you've chosen to walk into the wilderness and look for her."
   );
 }
-let crimsonDoor = "y";
+
 function enterForest(eatMush) {
   console.log(
     "\nYou spotted a nice-looking mushroom not long after entering the wilderness, and you're starving."
@@ -45,9 +45,9 @@ function enterForest(eatMush) {
     );
     console.log("\nSo you went to have a peek and discovered a crimson door.");
   } else {
-    console.log("\nTaking a look around");
-    crimsonDoor = "n";
-    // need to be fixed
+    console.log(
+      "\nTaking a look around.\n\nYou've decided to stay at home because the outside is too frightening for you; you'll try again tomorrow."
+    );
   }
 }
 
@@ -55,7 +55,7 @@ function massiveTree(crimsonDoor) {
   console.log("\n----------------\nThe commands are (y)es or (n)o");
   crimsonDoor = rl.question("Do you want to knock? (y/n) ");
   while (crimsonDoor != "y" && crimsonDoor != "n") {
-    if (crimsonDoor) {
+    if (crimsonDoor != "y" && crimsonDoor != "n") {
       console.log("\nCome on!!! Is it that hard to enter (y)es or (n)o?");
       crimsonDoor = rl.question(
         "\nAre you going to knock on the door?! (y/n) "
@@ -73,7 +73,6 @@ function massiveTree(crimsonDoor) {
     console.log(
       "\nYou choose to ignore it by taking a nap.\n\nYou went home after taking a dump at your favourite spot.\n\nYou take another nap, hoping your mother will return to feed you."
     );
-
     // this needs to return to the beginning after player not knocking on the door
   }
 }
@@ -97,24 +96,33 @@ function caveEntry(goRight) {
     console.log(
       "\nThis path is tedious since there is no music and it is dark. You came to a dead end.\n\nHold on... you see something on the wall. Someone engraved “A89C90” upside down. What does that mean?\n\nIt's most likely nothing, so you turn around and decide to pursue the correct path."
     );
+    console.log(
+      "\nHold on...\nyou see something on the wall.\nSomeone engraved “A89C90” upside down. What does that mean?"
+    );
+    console.log(
+      `\nIt's most likely nothing, so you turn around and decide to pursue the correct path.`
+    );
   }
+  console.log(
+    `\nYou proceeded down the tunnel. It's been a while, and you're curious, so you decided to look back. The path appears to be the same as continuing on.\nSo you proceed down the tube until a little creature that resembles a person arrives.
+    Tiny creature: You know you don't belong here...
+    Chubby: Where am I? I am lost
+    Tiny creature: I might tell you but first you have to play a game with me, if you win, I will tell you.\nYou agreed to play the game out of desperation.`
+  );
 }
-// console.log(gameStart("y"));
-// console.log(enterForest("y"));
-// console.log(massiveTree("y"));
 
 // This needs to be fix
 function chubAdven(playGame, eatMush, crimsonDoor, goRight) {
-  while (true) {
-    console.log("Welcome");
-    gameStart(playGame);
+  console.log("Welcome");
+  gameStart(playGame);
+  do {
     lookMom();
     enterForest(eatMush);
     massiveTree(crimsonDoor);
-    caveEntry(goRight);
-    console.log("The end");
-    break;
-  }
+  } while (crimsonDoor != "y"); // need to find out why this is not passing to caveEntry function
+  caveEntry(goRight);
+  console.log("The end");
+
   return;
 }
 
