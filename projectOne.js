@@ -25,7 +25,7 @@ function lookMom() {
     "\nYou awoke at home, but your mother was not to be seen, and you are concerned for her since you are hungry.\n\nSo you decided to walk outdoors and look around for your mom.\n\nBecause your mom has gone missing, you've chosen to walk into the wilderness and look for her."
   );
 }
-let crimsonDoor;
+let crimsonDoor = "y";
 function enterForest(eatMush) {
   console.log(
     "\nYou spotted a nice-looking mushroom not long after entering the wilderness, and you're starving."
@@ -33,54 +33,55 @@ function enterForest(eatMush) {
   console.log("\n----------------\nThe commands are (y)es or (n)o");
   eatMush = rl.question("\nAre you going to eat it? (y/n) ");
   console.log("\n");
-  while (eatMush != "y") {
-    if (eatMush === "y") {
-      break;
-    } else if (eatMush === "n") {
-      console.log("\nTaking a look around");
-      crimsonDoor = "n";
-      break;
-    } else {
+  while (eatMush != "y" && eatMush != "n") {
+    if (eatMush != "y" && eatMush != "n") {
       console.log("\nHey little buddy, make up your mind!!! (y)es or (n)o?");
       eatMush = rl.question("Are you eating that beautiful mushroom?! (y/n) ");
     }
   }
-  console.log(
-    "\nYou weren't feeling well, so you opted to relax behind a massive tree.\n\nYou see something on the other side of the tree as you get closer to it."
-  );
+  if (eatMush === "y") {
+    console.log(
+      "\nYou weren't feeling well, so you opted to relax behind a massive tree.\n\nYou see something on the other side of the tree as you get closer to it."
+    );
+    console.log("\nSo you went to have a peek and discovered a crimson door.");
+  } else {
+    console.log("\nTaking a look around");
+    crimsonDoor = "n";
+    // need to be fixed
+  }
 }
 
 function massiveTree(crimsonDoor) {
-  console.log("\nSo you went to have a peek and discovered a crimson door.");
   console.log("\n----------------\nThe commands are (y)es or (n)o");
   crimsonDoor = rl.question("Do you want to knock? (y/n) ");
-  // need to be fixed
-  while (crimsonDoor != "y") {
-    if (crimsonDoor === "y") {
-      console.log(
-        "\nYou knocked but no one answered.\n\nThere is a strong blast of wind and thunder. It appears that a storm is on the way.\n\nYou are scare, so you are attempting to open the door\n\nAnd because the door was not secured, you chose to enter, expecting that the storm would pass quickly."
-      );
-      console.log(
-        "\nWhen you went inside, you shut the door and heard joyous music, as if there was a party farther down the tunnel.\n\nAnd you decided to follow the music to discover where it came from.\n\nYou noticed after 5 minutes of walking that you had completely forgotten you were sick from the mushroom, but there is a dividing point at the tunnel."
-      );
-    } else if (crimsonDoor === "n") {
-      console.log(
-        "\nYou choose to ignore it by taking a nap.\n\nYou went home after taking a dump at your favourite spot.\n\nYou take another nap, hoping your mother will return to feed you."
-      );
-
-      // this needs to return to the beginning
-    } else {
+  while (crimsonDoor != "y" && crimsonDoor != "n") {
+    if (crimsonDoor) {
       console.log("\nCome on!!! Is it that hard to enter (y)es or (n)o?");
       crimsonDoor = rl.question(
         "\nAre you going to knock on the door?! (y/n) "
       );
     }
   }
+
+  if (crimsonDoor === "y") {
+    console.log(
+      "\nYou knocked but no one answered.\n\nThere is a strong blast of wind and thunder. It appears that a storm is on the way.\n\nYou are scare, so you are attempting to open the door\n\nAnd because the door was not secured, you chose to enter, expecting that the storm would pass quickly."
+    );
+    console.log(
+      "\nWhen you went inside, you shut the door and heard joyous music, as if there was a party farther down the tunnel.\n\nAnd you decided to follow the music to discover where it came from.\n\nYou noticed after 5 minutes of walking that you had completely forgotten you were sick from the mushroom, but there is a dividing point at the tunnel."
+    );
+  } else {
+    console.log(
+      "\nYou choose to ignore it by taking a nap.\n\nYou went home after taking a dump at your favourite spot.\n\nYou take another nap, hoping your mother will return to feed you."
+    );
+
+    // this needs to return to the beginning after player not knocking on the door
+  }
 }
 
 function caveEntry(goRight) {
   console.log("\n----------------\nThe commands are (r)ight or (l)eft");
-  crimsonDoor = rl.question(
+  goRight = rl.question(
     "\nShould you go right and follow the music or go left? (r/l) "
   );
   while (goRight != "r" && goRight != "l") {
