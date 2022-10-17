@@ -158,6 +158,12 @@ function challengeTwo(fightflee) {
       "\n----------------\nThe commands are (f)ight or any key to flee"
     );
     fightflee = rl.question("\nShould you fight or flee? (f/any key) ");
+
+    if (fightflee != "f") {
+      console.log(
+        "You tried to go back to where you came from, but the place seemed familiar, and the Grumpy creature appeared to be no longer after you."
+      );
+    }
   } while (fightflee != "f");
   console.log(
     "So you choose to fight. To win, you must win three games of Rock, Paper, Scissors. If you win, you will receive an item; if you lose, one of your items will be removed."
