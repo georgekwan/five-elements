@@ -2,9 +2,9 @@ import rl from "readline-sync";
 // const rl = require("readline-sync");
 ("use strict");
 let items = [];
-function gameStart(playGame) {
+function gameStart() {
   console.log("\n----------------\nThe commands are (y)es or (n)o");
-  playGame = rl.question(
+  let playGame = rl.question(
     "\nAre you ready for to go on an adventure as Chubby? (y/n) "
   );
   while (playGame != "y") {
@@ -28,13 +28,14 @@ function lookMom() {
   );
 }
 
-function enterForest(eatMush) {
+function enterForest() {
   console.log(
     "\nYou spotted a nice-looking mushroom not long after entering the wilderness, and you're starving."
   );
   console.log("\n----------------\nThe commands are (y)es or (n)o");
-  eatMush = rl.question("\nAre you going to eat it? (y/n) ");
+  let eatMush = rl.question("\nAre you going to eat it? (y/n) ");
   console.log("\n");
+
   while (eatMush != "y" && eatMush != "n") {
     if (eatMush != "y" && eatMush != "n") {
       console.log("\nHey little buddy, make up your mind!!! (y)es or (n)o?");
@@ -52,11 +53,13 @@ function enterForest(eatMush) {
       "\nTaking a look around.\n\nYou've decided to stay at home because the outside is too frightening for you; you'll try again tomorrow."
     );
   }
+
+  return eatMush;
 }
 
-function massiveTree(crimsonDoor) {
+function massiveTree() {
   console.log("\n----------------\nThe commands are (y)es or (n)o");
-  crimsonDoor = rl.question("Do you want to knock? (y/n) ");
+  let crimsonDoor = rl.question("Do you want to knock? (y/n) ");
   while (crimsonDoor != "y" && crimsonDoor != "n") {
     if (crimsonDoor != "y" && crimsonDoor != "n") {
       console.log("\nCome on!!! Is it that hard to enter (y)es or (n)o?");
@@ -76,13 +79,13 @@ function massiveTree(crimsonDoor) {
     console.log(
       "\nYou choose to ignore it by taking a nap.\n\nYou went home after taking a dump at your favourite spot.\n\nYou take another nap, hoping your mother will return to feed you."
     );
-    // this needs to return to the beginning after player not knocking on the door
   }
+  return crimsonDoor;
 }
 
-function caveEntry(goRight) {
+function caveEntry(goRght) {
   console.log("\n----------------\nThe commands are (r)ight or (l)eft");
-  goRight = rl.question(
+  let goRight = rl.question(
     "\nShould you go right and follow the music or go left? (r/l) "
   );
   while (goRight != "r" && goRight != "l") {
@@ -114,40 +117,56 @@ function caveEntry(goRight) {
   );
 }
 
-function challengeOne(playGuess) {
-  console.log(
-    `\nTiny creature: The game is simple. It's heads or tails. To win, you must guess right twice.`
-  );
+function challengeOne() {
+  // console.log(
+  //   `\nTiny creature: The game is simple. It's heads or tails. To win, you must guess right twice.`
+  // );
   console.log("\n----------------\nThe commands are (h)eads or (t)ails");
-  playGuess = rl.question("Do you pick heads or tails? (h/t) ");
+  let playGuess = rl.question("Do you pick heads or tails? (h/t) ");
   while (playGuess != "h" && playGuess != "t") {
     console.log("\n----------------\nThe commands are (h)eads or (t)ails");
     playGuess = rl.question("Do you pick heads or tails? (h/t) ");
   }
-
+  let coinGuess = playGuess === "h" ? "heads" : "tails";
+  let coinResult = Math.random() * 1 > 0.5 ? "heads" : "tails";
   do {
-    const coinGuess = playGuess === "h" ? "heads" : "tails";
-    const coinResult = Math.random() * 1 > 0.5 ? "heads" : "tails";
-    console.log(
-      `\n***The coin result is ${coinResult} but you guessed ${coinGuess}, try again :(***`
-    );
-    console.log("\n----------------\nThe commands are (h)eads or (t)ails");
-    playGuess = rl.question("Do you pick heads or tails? (h/t) ");
-  } while (coinGuess !== coinResult); // this needs to be debugged
+    // coinGuess = playGuess === "h" ? "heads" : "tails";
+    if (coinGuess === coinResult) {
+      console.log(
+        `***The coin result is ${coinResult} and you guessed ${coinGuess}, you win :)***`
+      );
+    } else {
+      console.log(
+        `\n***The coin result is ${coinResult} but you guessed ${coinGuess}, try again :(***`
+      );
+      console.log("\n----------------\nThe commands are (h)eads or (t)ails");
+      playGuess = rl.question("Do you pick heads or tails? (h/t) ");
+    }
+  } while (playGuess !== playGuess);
 
-  if (coinGuess === coinResult) {
-    console.log(
-      `\n***The coin result is ${coinResult} and you guessed ${coinGuess}, you win :)***`
-    );
-    console.log(`\nTiny creature: That was great; I don't usually get visitors, but since you won, I'll honour my promise. Raizel, Daughter of the Soul Eater, owns this world and enjoys collecting young pups. Many puppies end up down here and never make it back to their owners.
-  \n(foot step noise)
-  \nTiny creature(whisper): I shouldn't say too much about her; Here, keep this coin you will need it to get out. Best of luck little guy!`);
-    console.log(`\n***You have collected a shiny coin***`);
-    items.push("Shiny coin");
-  }
-  console.log(
-    "\nThe tiny creature vanished with a poof! And you keep going down into the gloomy tunnel."
-  );
+  // while (coinGuess !== coinResult) {
+  //   coinGuess = playGuess === "h" ? "heads" : "tails";
+  //   console.log(
+  //     `\n***The coin result is ${coinResult} but you guessed ${coinGuess}, try again :(***`
+  //   );
+  //   console.log("\n----------------\nThe commands are (h)eads or (t)ails");
+  //   playGuess = rl.question("Do you pick heads or tails? (h/t) ");
+  // }
+
+  // if (coinGuess === coinResult) {
+  //   console.log(
+  //     `\n***The coin result is ${coinResult} and you guessed ${coinGuess}, you win :)***`
+  //   );
+
+  // console.log(`\nTiny creature: That was great; I don't usually get visitors, but since you won, I'll honour my promise. Raizel, Daughter of the Soul Eater, owns this world and enjoys collecting young pups. Many puppies end up down here and never make it back to their owners.
+  // \n(foot step noise)
+  // \nTiny creature(whisper): I shouldn't say too much about her; Here, keep this coin you will need it to get out. Best of luck little guy!`);
+  console.log(`\n***You have collected a shiny coin***`);
+  items.push("Shiny coin");
+
+  // console.log(
+  //   "\nThe tiny creature vanished with a poof! And you keep going down into the gloomy tunnel."
+  // );
 }
 
 function challengeTwo(fightflee) {
@@ -171,16 +190,21 @@ function challengeTwo(fightflee) {
 }
 
 // This needs to be fix
-function chubAdven(playGame, eatMush, crimsonDoor, goRight, playGuess) {
+function chubAdven() {
   console.log("Welcome");
-  gameStart(playGame);
-  // do {
-  lookMom();
-  enterForest(eatMush);
-  massiveTree(crimsonDoor);
-  // } while (crimsonDoor != "y"); need to find out why this is not passing to caveEntry function
-  caveEntry(goRight);
-  challengeOne(playGuess);
+  gameStart();
+  let crimsonDoor;
+  do {
+    let eatMush;
+    do {
+      lookMom();
+      eatMush = enterForest();
+    } while (eatMush !== "y");
+    crimsonDoor = massiveTree();
+  } while (crimsonDoor !== "y");
+  //need to find out why this is not passing to caveEntry function
+  caveEntry();
+  challengeOne();
   console.log("The end");
 }
 chubAdven();
