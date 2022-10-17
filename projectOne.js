@@ -1,6 +1,7 @@
 import rl from "readline-sync";
+// const rl = require("readline-sync");
 ("use strict");
-
+let items = [];
 function gameStart(playGame) {
   console.log("\n----------------\nThe commands are (y)es or (n)o");
   playGame = rl.question(
@@ -15,6 +16,7 @@ function gameStart(playGame) {
       playGame = rl.question("Now... are you ready for an adventure?! (y/n) ");
     }
   }
+
   console.log(
     "\nYou are a bichon shih tzu. You enjoy sleeping and eating on a daily basis. Your mother always says you're fearless and enjoy adventure, but the only places you've been are around the neighbourhood and the off-leash park. But one day everything changes..."
   );
@@ -39,6 +41,7 @@ function enterForest(eatMush) {
       eatMush = rl.question("Are you eating that beautiful mushroom?! (y/n) ");
     }
   }
+
   if (eatMush === "y") {
     console.log(
       "\nYou weren't feeling well, so you opted to relax behind a massive tree.\n\nYou see something on the other side of the tree as you get closer to it."
@@ -105,25 +108,73 @@ function caveEntry(goRight) {
   }
   console.log(
     `\nYou proceeded down the tunnel. It's been a while, and you're curious, so you decided to look back. The path appears to be the same as continuing on.\nSo you proceed down the tube until a little creature that resembles a person arrives.
-    Tiny creature: You know you don't belong here...
-    Chubby: Where am I? I am lost
-    Tiny creature: I might tell you but first you have to play a game with me, if you win, I will tell you.\nYou agreed to play the game out of desperation.`
+    \nTiny creature: You know you don't belong here...
+    \nChubby: Where am I? I am lost
+    \nTiny creature: I might tell you but first you have to play a game with me, if you win, I will tell you.\nYou agreed to play the game out of desperation.`
+  );
+}
+
+function challengeOne(playGuess) {
+  console.log(
+    `\nTiny creature: The game is simple. It's heads or tails. To win, you must guess right twice.`
+  );
+  console.log("\n----------------\nThe commands are (h)eads or (t)ails");
+  playGuess = rl.question("Do you pick heads or tails? (h/t) ");
+  while (playGuess != "h" && playGuess != "t") {
+    console.log("\n----------------\nThe commands are (h)eads or (t)ails");
+    playGuess = rl.question("Do you pick heads or tails? (h/t) ");
+  }
+
+  do {
+    const coinGuess = playGuess === "h" ? "heads" : "tails";
+    const coinResult = Math.random() * 1 > 0.5 ? "heads" : "tails";
+    console.log(
+      `\n***The coin result is ${coinResult} but you guessed ${coinGuess}, try again :(***`
+    );
+    console.log("\n----------------\nThe commands are (h)eads or (t)ails");
+    playGuess = rl.question("Do you pick heads or tails? (h/t) ");
+  } while (coinGuess !== coinResult); // this needs to be debugged
+
+  if (coinGuess === coinResult) {
+    console.log(
+      `\n***The coin result is ${coinResult} and you guessed ${coinGuess}, you win :)***`
+    );
+    console.log(`\nTiny creature: That was great; I don't usually get visitors, but since you won, I'll honour my promise. Raizel, Daughter of the Soul Eater, owns this world and enjoys collecting young pups. Many puppies end up down here and never make it back to their owners.
+  \n(foot step noise)
+  \nTiny creature(whisper): I shouldn't say too much about her; Here, keep this coin you will need it to get out. Best of luck little guy!`);
+    console.log(`\n***You have collected a shiny coin***`);
+    items.push("Shiny coin");
+  }
+  console.log(
+    "\nThe tiny creature vanished with a poof! And you keep going down into the gloomy tunnel."
+  );
+}
+
+function challengeTwo(fightflee) {
+  do {
+    console.log(`\nA Grumpy creature appears.
+    \nGrumpy creature: Stop, you! I have to catch you so that Raizel will reward me.`);
+    console.log(
+      "\n----------------\nThe commands are (f)ight or any key to flee"
+    );
+    fightflee = rl.question("\nShould you fight or flee? (f/any key) ");
+  } while (fightflee != "f");
+  console.log(
+    "So you choose to fight. To win, you must win three games of Rock, Paper, Scissors. If you win, you will receive an item; if you lose, one of your items will be removed."
   );
 }
 
 // This needs to be fix
-function chubAdven(playGame, eatMush, crimsonDoor, goRight) {
+function chubAdven(playGame, eatMush, crimsonDoor, goRight, playGuess) {
   console.log("Welcome");
   gameStart(playGame);
-  do {
-    lookMom();
-    enterForest(eatMush);
-    massiveTree(crimsonDoor);
-  } while (crimsonDoor != "y"); // need to find out why this is not passing to caveEntry function
+  // do {
+  lookMom();
+  enterForest(eatMush);
+  massiveTree(crimsonDoor);
+  // } while (crimsonDoor != "y"); need to find out why this is not passing to caveEntry function
   caveEntry(goRight);
+  challengeOne(playGuess);
   console.log("The end");
-
-  return;
 }
-
 chubAdven();
