@@ -36,15 +36,20 @@ function enterForest() {
     "\nYou spotted a nice-looking mushroom not long after entering the wilderness, and you're starving."
   );
   console.log("\n----------------\nThe commands are (y)es or (n)o");
-  let eatMush = rl.question("\nAre you going to eat it? (y/n) ");
+
+  let eatMush = rl.keyIn("\nAre you eating that beautiful mushroom?! (y/n) ", {
+    hideEchoBack: false,
+    mask: "",
+    limit: "yn",
+  });
   console.log("\n");
 
-  while (eatMush != "y" && eatMush != "n") {
-    if (eatMush != "y" && eatMush != "n") {
-      console.log("\nHey little buddy, make up your mind!!! (y)es or (n)o?");
-      eatMush = rl.question("Are you eating that beautiful mushroom?! (y/n) ");
-    }
-  }
+  // while (eatMush != "y" && eatMush != "n") {
+  //   if (eatMush != "y" && eatMush != "n") {
+  //     console.log("\nHey little buddy, make up your mind!!! (y)es or (n)o?");
+  //     eatMush = rl.question("Are you eating that beautiful mushroom?! (y/n) ");
+  //   }
+  // }
 
   if (eatMush === "y") {
     console.log(
@@ -62,15 +67,13 @@ function enterForest() {
 
 function massiveTree() {
   console.log("\n----------------\nThe commands are (y)es or (n)o");
-  let crimsonDoor = rl.question("Do you want to knock? (y/n) ");
-  while (crimsonDoor != "y" && crimsonDoor != "n") {
-    if (crimsonDoor != "y" && crimsonDoor != "n") {
-      console.log("\nCome on!!! Is it that hard to enter (y)es or (n)o?");
-      crimsonDoor = rl.question(
-        "\nAre you going to knock on the door?! (y/n) "
-      );
-    }
-  }
+
+  let crimsonDoor = rl.keyIn("\nDo you want to knock? (y/n) ", {
+    hideEchoBack: false,
+    mask: "",
+    limit: "yn",
+  });
+
   if (crimsonDoor === "y") {
     console.log(
       "\nYou knocked but no one answered.\n\nThere is a strong blast of wind and thunder. It appears that a storm is on the way.\n\nYou are scare, so you are attempting to open the door\n\nAnd because the door was not secured, you chose to enter, expecting that the storm would pass quickly."
@@ -88,18 +91,17 @@ function massiveTree() {
 
 function caveEntry() {
   console.log("\n----------------\nThe commands are (r)ight or (l)eft");
-  let goRight = rl.question(
-    "\nShould you go right and follow the music or go left? (r/l) "
-  );
-  while (goRight != "r" && goRight != "l") {
-    if (goRight != "r" && goRight != "l") {
-      console.log(
-        "\nCome on!!! Do you know where you are going? Pick (r)ight or (l)eft"
-      );
-      goRight = rl.question("Make up your mind! (r/l) ");
+
+  let goRight = rl.keyIn(
+    "\nShould you go right and follow the music or go left? (r/l) ",
+    {
+      hideEchoBack: false,
+      mask: "",
+      limit: "rl",
     }
-  }
-  if (goRight === "y") {
+  );
+
+  if (goRight === "r") {
     console.log("\nYou chose to take the path where the music is playing.");
   } else {
     console.log(
@@ -125,11 +127,13 @@ function challengeOne() {
     `\nTiny creature: The game is simple. It's heads or tails. To win, you must guess right twice.`
   );
   console.log("\n----------------\nThe commands are (h)eads or (t)ails");
-  let playGuess = rl.question("Do you pick heads or tails? (h/t) ");
-  while (playGuess != "h" && playGuess != "t") {
-    console.log("\n----------------\nThe commands are (h)eads or (t)ails");
-    playGuess = rl.question("Do you pick heads or tails? (h/t) ");
-  }
+
+  let playGuess = rl.keyIn("\nDo you pick heads or tails? (h/t) ", {
+    hideEchoBack: false,
+    mask: "",
+    limit: "ht",
+  });
+
   let coinGuess = playGuess === "h" ? "heads" : "tails";
   let coinResult = Math.random() * 1 > 0.5 ? "heads" : "tails";
 
@@ -138,9 +142,16 @@ function challengeOne() {
       `\n***The coin result is ${coinResult} but you guessed ${coinGuess}, try again :(***`
     );
     console.log("\n----------------\nThe commands are (h)eads or (t)ails");
-    playGuess = rl.question("Do you pick heads or tails? (h/t) ");
+
+    playGuess = rl.keyIn("\nDo you pick heads or tails? (h/t) ", {
+      hideEchoBack: false,
+      mask: "",
+      limit: "ht",
+    });
     coinGuess = playGuess === "h" ? "heads" : "tails";
+    console.log(coinGuess);
     coinResult = Math.random() * 1 > 0.5 ? "heads" : "tails";
+    console.log(coinResult);
   }
   console.log(
     `***The coin result is ${coinResult} and you guessed ${coinGuess}, you win :)***`
@@ -158,33 +169,40 @@ function challengeOne() {
 }
 
 function challengeTwo() {
+  let fightflee;
   do {
     console.log(`\nA Grumpy creature appears.
     \nGrumpy creature: Stop, you! I have to catch you so that Raizel will reward me.`);
     console.log(
-      "\n----------------\nThe commands are (f)ight or any key to flee"
+      "\n----------------\nThe commands are (f)ight or any key to f(l)ee"
     );
-    let fightflee = rl.question("\nShould you fight or flee? (f/any key) ");
 
-    if (fightflee !== "f") {
+    fightflee = rl.keyIn("\nShould you fight or flee? (f/l) ", {
+      hideEchoBack: false,
+      mask: "",
+      limit: "fl",
+    });
+    if (fightflee === "l") {
       console.log(
         "\nYou tried to go back to where you came from, but the place seemed familiar, and the Grumpy creature appeared to be no longer after you."
       );
     }
-  } while (fightflee !== "f");
+    // needs to be fixed
+  } while (fightflee === "l");
+
   console.log(
     "\nSo you choose to fight. To win, you must win three games of Rock, Paper, Scissors. If you win, you will receive an item; if you lose, one of your items will be removed."
   );
-  //
-  if (RPS === false) {
-    console.log(
-      "\nFortunately, the Grumpy Creature was so delighted about stealing your coin that it forgot about catching you."
-    );
-  } else {
-    console.log("\nThe Grumpy Creature disappear and it has dropped an item.");
-    console.log("***You collected a golden collar***");
-    items.push("golden collar");
-  }
+
+  // if (RPS === false) {
+  //   console.log(
+  //     "\nFortunately, the Grumpy Creature was so delighted about stealing your coin that it forgot about catching you."
+  //   );
+  // } else {
+  //   console.log("\nThe Grumpy Creature disappear and it has dropped an item.");
+  //   console.log("***You collected a golden collar***");
+  //   items.push("golden collar");
+  // }
 }
 
 function chubAdven() {
