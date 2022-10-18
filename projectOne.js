@@ -2,19 +2,22 @@ import rl from "readline-sync";
 // const rl = require("readline-sync");
 ("use strict");
 let items = [];
+
 function gameStart() {
   console.log("\n----------------\nThe commands are (y)es or (n)o");
-  let playGame = rl.question(
-    "\nAre you ready for to go on an adventure as Chubby? (y/n) "
+
+  let playGame = rl.keyIn(
+    "Are you ready for to go on an adventure as Chubby? (y/n) ",
+    { hideEchoBack: false, mask: "", limit: "yn" }
   );
+
   while (playGame != "y") {
-    if (playGame === "n") {
-      console.log("\n----------------\nPlease enter (y)es when you are ready.");
-      playGame = rl.question("Are you ready for an adventure? (y/n) ");
-    } else {
-      console.log("\nCome on!!! Is it that hard to enter (y)es or (n)o?");
-      playGame = rl.question("Now... are you ready for an adventure?! (y/n) ");
-    }
+    console.log("\n----------------\nPlease enter (y)es when you are ready.");
+    playGame = rl.keyIn("Are you ready for an adventure? (y/n) ", {
+      hideEchoBack: false,
+      mask: "",
+      limit: "yn",
+    });
   }
 
   console.log(
@@ -147,7 +150,7 @@ function challengeOne() {
   \n(foot step noise)
   \nTiny creature(whisper): I shouldn't say too much about her; Here, keep this coin you will need it to get out. Best of luck little guy!`);
   console.log(`\n***You have collected a shiny coin***`);
-  items.push("Shiny coin");
+  items.push("shiny coin");
 
   console.log(
     "\nThe tiny creature vanished with a poof! And you keep going down into the gloomy tunnel."
@@ -165,13 +168,23 @@ function challengeTwo() {
 
     if (fightflee !== "f") {
       console.log(
-        "You tried to go back to where you came from, but the place seemed familiar, and the Grumpy creature appeared to be no longer after you."
+        "\nYou tried to go back to where you came from, but the place seemed familiar, and the Grumpy creature appeared to be no longer after you."
       );
     }
   } while (fightflee !== "f");
   console.log(
-    "So you choose to fight. To win, you must win three games of Rock, Paper, Scissors. If you win, you will receive an item; if you lose, one of your items will be removed."
+    "\nSo you choose to fight. To win, you must win three games of Rock, Paper, Scissors. If you win, you will receive an item; if you lose, one of your items will be removed."
   );
+  //
+  if (RPS === false) {
+    console.log(
+      "\nFortunately, the Grumpy Creature was so delighted about stealing your coin that it forgot about catching you."
+    );
+  } else {
+    console.log("\nThe Grumpy Creature disappear and it has dropped an item.");
+    console.log("***You collected a golden collar***");
+    items.push("golden collar");
+  }
 }
 
 function chubAdven() {
