@@ -129,20 +129,19 @@ function challengeOne() {
   }
   let coinGuess = playGuess === "h" ? "heads" : "tails";
   let coinResult = Math.random() * 1 > 0.5 ? "heads" : "tails";
-  do {
+
+  while (coinResult !== coinGuess) {
+    console.log(
+      `\n***The coin result is ${coinResult} but you guessed ${coinGuess}, try again :(***`
+    );
+    console.log("\n----------------\nThe commands are (h)eads or (t)ails");
+    playGuess = rl.question("Do you pick heads or tails? (h/t) ");
     coinGuess = playGuess === "h" ? "heads" : "tails";
-    if (coinGuess === coinResult) {
-      console.log(
-        `***The coin result is ${coinResult} and you guessed ${coinGuess}, you win :)***`
-      );
-    } else {
-      console.log(
-        `\n***The coin result is ${coinResult} but you guessed ${coinGuess}, try again :(***`
-      );
-      console.log("\n----------------\nThe commands are (h)eads or (t)ails");
-      playGuess = rl.question("Do you pick heads or tails? (h/t) ");
-    }
-  } while (coinGuess !== coinResult);
+    coinResult = Math.random() * 1 > 0.5 ? "heads" : "tails";
+  }
+  console.log(
+    `***The coin result is ${coinResult} and you guessed ${coinGuess}, you win :)***`
+  );
 
   console.log(`\nTiny creature: That was great; I don't usually get visitors, but since you won, I'll honour my promise. Raizel, Daughter of the Soul Eater, owns this world and enjoys collecting young pups. Many puppies end up down here and never make it back to their owners.
   \n(foot step noise)
@@ -162,14 +161,14 @@ function challengeTwo() {
     console.log(
       "\n----------------\nThe commands are (f)ight or any key to flee"
     );
-    fightflee = rl.question("\nShould you fight or flee? (f/any key) ");
+    let fightflee = rl.question("\nShould you fight or flee? (f/any key) ");
 
-    if (fightflee != "f") {
+    if (fightflee !== "f") {
       console.log(
         "You tried to go back to where you came from, but the place seemed familiar, and the Grumpy creature appeared to be no longer after you."
       );
     }
-  } while (fightflee != "f");
+  } while (fightflee !== "f");
   console.log(
     "So you choose to fight. To win, you must win three games of Rock, Paper, Scissors. If you win, you will receive an item; if you lose, one of your items will be removed."
   );
@@ -187,9 +186,9 @@ function chubAdven() {
     } while (eatMush !== "y");
     crimsonDoor = massiveTree();
   } while (crimsonDoor !== "y");
-
   caveEntry();
   challengeOne();
+  challengeTwo();
   console.log("The end");
 }
 chubAdven();
