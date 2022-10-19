@@ -1,15 +1,22 @@
 import rl from "readline-sync";
-// const rl = require("readline-sync");
+
 ("use strict");
 let items = [];
+function yesNoCommands() {
+  console.log("\n----------------\nThe commands are (y)es or (n)o");
+}
 
 function gameStart() {
-  console.log("\n----------------\nThe commands are (y)es or (n)o");
+  yesNoCommands();
 
   let playGame = rl.keyIn(
     "Are you ready for to go on an adventure as Chubby? (y/n) ",
     { hideEchoBack: false, mask: "", limit: "yn" }
   );
+
+  // let playGame = rl.keyInYN(
+  //   `Are you ready for to go on an adventure as Chubby? (y/n) `
+  // );
 
   while (playGame != "y") {
     console.log("\n----------------\nPlease enter (y)es when you are ready.");
@@ -20,6 +27,11 @@ function gameStart() {
     });
   }
 
+  // while (playGame != "y") {
+  //   console.log("\n----------------\nPlease enter (y)es when you are ready.");
+  //   playGame = rl.keyInYN("Are you ready for an adventure?");
+  // }
+
   console.log(
     "\nYou are a bichon shih tzu. You enjoy sleeping and eating on a daily basis. Your mother always says you're fearless and enjoy adventure, but the only places you've been are around the neighbourhood and the off-leash park. But one day everything changes..."
   );
@@ -29,13 +41,14 @@ function lookMom() {
   console.log(
     "\nYou awoke at home, but your mother was not to be seen, and you are concerned for her since you are hungry.\n\nSo you decided to walk outdoors and look around for your mom.\n\nBecause your mom has gone missing, you've chosen to walk into the wilderness and look for her."
   );
+  rl.keyInPause("Hit any key continue...");
 }
 
 function enterForest() {
   console.log(
     "\nYou spotted a nice-looking mushroom not long after entering the wilderness, and you're starving."
   );
-  console.log("\n----------------\nThe commands are (y)es or (n)o");
+  yesNoCommands();
 
   let eatMush = rl.keyIn("\nAre you eating that beautiful mushroom?! (y/n) ", {
     hideEchoBack: false,
@@ -60,14 +73,14 @@ function enterForest() {
     console.log(
       "\nTaking a look around.\n\nYou've decided to stay at home because the outside is too frightening for you; you'll try again tomorrow."
     );
+    rl.keyInPause("Hit any key continue...");
   }
 
   return eatMush;
 }
 
 function massiveTree() {
-  console.log("\n----------------\nThe commands are (y)es or (n)o");
-
+  yesNoCommands();
   let crimsonDoor = rl.keyIn("\nDo you want to knock? (y/n) ", {
     hideEchoBack: false,
     mask: "",
@@ -78,6 +91,7 @@ function massiveTree() {
     console.log(
       "\nYou knocked but no one answered.\n\nThere is a strong blast of wind and thunder. It appears that a storm is on the way.\n\nYou are scare, so you are attempting to open the door\n\nAnd because the door was not secured, you chose to enter, expecting that the storm would pass quickly."
     );
+    rl.keyInPause("Hit any key continue...");
     console.log(
       "\nWhen you went inside, you shut the door and heard joyous music, as if there was a party farther down the tunnel.\n\nAnd you decided to follow the music to discover where it came from.\n\nYou noticed after 5 minutes of walking that you had completely forgotten you were sick from the mushroom, but there is a dividing point at the tunnel."
     );
@@ -107,9 +121,11 @@ function caveEntry() {
     console.log(
       "\nThis path is tedious since there is no music and it is dark. You came to a dead end.\n\nHold on... you see something on the wall. Someone engraved “A89C90” upside down. What does that mean?\n\nIt's most likely nothing, so you turn around and decide to pursue the correct path."
     );
+    rl.keyInPause("Hit any key continue...");
     console.log(
       "\nHold on...\nyou see something on the wall.\nSomeone engraved “A89C90” upside down. What does that mean?"
     );
+    rl.keyInPause("Hit any key continue...");
     console.log(
       `\nIt's most likely nothing, so you turn around and decide to pursue the correct path.`
     );
@@ -162,7 +178,7 @@ function challengeOne() {
   \nTiny creature(whisper): I shouldn't say too much about her; Here, keep this coin you will need it to get out. Best of luck little guy!`);
   console.log(`\n***You have collected a shiny coin***`);
   items.push("shiny coin");
-
+  rl.keyInPause("Hit any key continue...");
   console.log(
     "\nThe tiny creature vanished with a poof! And you keep going down into the gloomy tunnel."
   );
@@ -186,6 +202,7 @@ function challengeTwo() {
       console.log(
         "\nYou tried to go back to where you came from, but the place seemed familiar, and the Grumpy creature appeared to be no longer after you."
       );
+      rl.keyInPause("Hit any key continue...");
     }
     // needs to be fixed
   } while (fightflee === "l");
