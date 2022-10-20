@@ -11,12 +11,14 @@ import {
 export function chubAdven() {
   console.log("Welcome");
   gameStart();
+
+  let eatMush;
   let crimsonDoor;
   do {
-    let eatMush;
     do {
       lookMom();
       eatMush = enterForest();
+      // This needs to be fixed, problem was created after call function seperated from its own file
     } while (eatMush !== "y");
     crimsonDoor = massiveTree();
   } while (crimsonDoor !== "y");
@@ -25,4 +27,5 @@ export function chubAdven() {
   challengeTwo();
   console.log("The end");
 }
-chubAdven();
+
+// chubAdven();
