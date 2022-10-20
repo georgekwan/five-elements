@@ -1,12 +1,17 @@
 import rl from "readline-sync";
-
+import {
+  yesNoCommands,
+  gameStartStory,
+  wokeUpHome,
+  niceMushroom,
+  eatMushYes,
+  eatMushNo,
+} from "./story.js";
 ("use strict");
-let items = [];
-function yesNoCommands() {
-  console.log("\n----------------\nThe commands are (y)es or (n)o");
-}
 
-function gameStart() {
+let items = [];
+
+export function gameStart() {
   yesNoCommands();
 
   let playGame = rl.keyIn(
@@ -14,40 +19,25 @@ function gameStart() {
     { hideEchoBack: false, mask: "", limit: "yn" }
   );
 
-  // let playGame = rl.keyInYN(
-  //   `Are you ready for to go on an adventure as Chubby? (y/n) `
-  // );
-
   while (playGame != "y") {
-    console.log("\n----------------\nPlease enter (y)es when you are ready.");
-    playGame = rl.keyIn("Are you ready for an adventure? (y/n) ", {
+    yesCommands();
+    playGame = rl.keyIn("Are you ready for an adventure? ", {
       hideEchoBack: false,
       mask: "",
-      limit: "yn",
+      limit: "y",
     });
   }
 
-  // while (playGame != "y") {
-  //   console.log("\n----------------\nPlease enter (y)es when you are ready.");
-  //   playGame = rl.keyInYN("Are you ready for an adventure?");
-  // }
-
-  console.log(
-    "\nYou are a bichon shih tzu. You enjoy sleeping and eating on a daily basis. Your mother always says you're fearless and enjoy adventure, but the only places you've been are around the neighbourhood and the off-leash park. But one day everything changes..."
-  );
+  gameStartStory();
 }
 
-function lookMom() {
-  console.log(
-    "\nYou awoke at home, but your mother was not to be seen, and you are concerned for her since you are hungry.\n\nSo you decided to walk outdoors and look around for your mom.\n\nBecause your mom has gone missing, you've chosen to walk into the wilderness and look for her."
-  );
+export function lookMom() {
+  return wokeUpHome();
   rl.keyInPause("Hit any key continue...");
 }
 
-function enterForest() {
-  console.log(
-    "\nYou spotted a nice-looking mushroom not long after entering the wilderness, and you're starving."
-  );
+export function enterForest() {
+  niceMushroom();
   yesNoCommands();
 
   let eatMush = rl.keyIn("\nAre you eating that beautiful mushroom?! (y/n) ", {
@@ -57,29 +47,16 @@ function enterForest() {
   });
   console.log("\n");
 
-  // while (eatMush != "y" && eatMush != "n") {
-  //   if (eatMush != "y" && eatMush != "n") {
-  //     console.log("\nHey little buddy, make up your mind!!! (y)es or (n)o?");
-  //     eatMush = rl.question("Are you eating that beautiful mushroom?! (y/n) ");
-  //   }
-  // }
-
   if (eatMush === "y") {
-    console.log(
-      "\nYou weren't feeling well, so you opted to relax behind a massive tree.\n\nYou see something on the other side of the tree as you get closer to it."
-    );
-    console.log("\nSo you went to have a peek and discovered a crimson door.");
+    return eatMushYes();
   } else {
-    console.log(
-      "\nTaking a look around.\n\nYou've decided to stay at home because the outside is too frightening for you; you'll try again tomorrow."
-    );
-    rl.keyInPause("Hit any key continue...");
+    return eatMushNo();
   }
-
+  rl.keyInPause("Hit any key continue...");
   return eatMush;
 }
 
-function massiveTree() {
+export function massiveTree() {
   yesNoCommands();
   let crimsonDoor = rl.keyIn("\nDo you want to knock? (y/n) ", {
     hideEchoBack: false,
@@ -103,7 +80,7 @@ function massiveTree() {
   return crimsonDoor;
 }
 
-function caveEntry() {
+export function caveEntry() {
   console.log("\n----------------\nThe commands are (r)ight or (l)eft");
 
   let goRight = rl.keyIn(
@@ -138,7 +115,7 @@ function caveEntry() {
   );
 }
 
-function challengeOne() {
+export function challengeOne() {
   console.log(
     `\nTiny creature: The game is simple. It's heads or tails. To win, you must guess right twice.`
   );
@@ -184,7 +161,7 @@ function challengeOne() {
   );
 }
 
-function challengeTwo() {
+export function challengeTwo() {
   let fightflee;
   do {
     console.log(`\nA Grumpy creature appears.
@@ -221,22 +198,3 @@ function challengeTwo() {
   //   items.push("golden collar");
   // }
 }
-
-function chubAdven() {
-  console.log("Welcome");
-  gameStart();
-  let crimsonDoor;
-  do {
-    let eatMush;
-    do {
-      lookMom();
-      eatMush = enterForest();
-    } while (eatMush !== "y");
-    crimsonDoor = massiveTree();
-  } while (crimsonDoor !== "y");
-  caveEntry();
-  challengeOne();
-  challengeTwo();
-  console.log("The end");
-}
-chubAdven();
