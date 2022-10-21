@@ -78,8 +78,9 @@ app.get("/gameOneInstruc", (req, res) => {
 
 app.get("/gameOne", (req, res) => {
   const playerInput = req.query.playerInput;
-  coinFlip(playerInput);
-  res.send(message);
+  console.log(playerInput);
+  coinFlip(playerInput)
+  res.json(message);
 });
 
 app.listen(port, () => console.log(`My game server running on port ${port}!`));

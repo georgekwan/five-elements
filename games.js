@@ -8,6 +8,8 @@ export function coinFlip(playerInput) {
   console.log(compGuess);
   if (playerGuess !== compGuess) {
     message = `\n***The coin result is ${compGuess} but you guessed ${playerGuess}, try again :(***`;
+    console.log("loss");
+    return 0;
   } else {
     message =
       `***The coin result is ${compGuess} and you guessed ${playerGuess}, you win :)***` +
@@ -15,5 +17,7 @@ export function coinFlip(playerInput) {
       shinyCoinCollect +
       tinyCreatureLeft;
     items.push("shiny coin");
+    console.log("win");
+    return 1;
   }
 }
