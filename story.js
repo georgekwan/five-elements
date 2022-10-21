@@ -1,7 +1,3 @@
-export function testingMessage() {
-  return "\n--------***Testing***story.js--------\n";
-}
-
 export const gameStartStory =
   "\nYou are a bichon shih tzu. You enjoy sleeping and eating on a daily basis. Your mother always says you're fearless and enjoy adventure, but the only places you've been are around the neighbourhood and the off-leash park. But one day everything changes...";
 

@@ -1,6 +1,5 @@
 import express from "express";
 
-// import { testingMessage } from "./story.js";
 // import { gameStart } from "./projectOne.js";
 import {
   eatMushYes,
@@ -17,17 +16,12 @@ import {
   tinyCreatureLeft,
 } from "./story.js";
 
+import { coinFlip, message } from "./games.js";
+
 const app = express();
 const port = 4003;
 
 app.use(express.json()); // send array or object to the backend
-
-// app.get("/", (req, res) => {
-//   console.log("some ting wong");
-//   testingMessage();
-//   res.send(testingMessage());
-// });
-let items = [];
 
 app.get("/gameStart", (req, res) => {
   const message = gameStartStory;
@@ -83,39 +77,8 @@ app.get("/gameOneInstruc", (req, res) => {
 });
 
 app.get("/gameOne", (req, res) => {
-  const playerInput = req.query.answer;
-  let message;
-  // console.log("\n----------------\nThe commands are (h)eads or (t)ails");
-
-  // let playerInput = rl.keyIn("\nDo you pick heads or tails? (h/t) ", {
-  //   hideEchoBack: false,
-  //   mask: "",
-  //   limit: "ht",
-  // });
-
-  let playerGuess = playerInput === "h" ? "heads" : "tails";
-  let compGuess = Math.random() * 1 > 0.5 ? "heads" : "tails";
-
-  while (compGuess !== playerGuess) {
-    message = `\n***The coin result is ${compGuess} but you guessed ${playerGuess}, try again :(***`;
-    // console.log("\n----------------\nThe commands are (h)eads or (t)ails");
-
-    // playGuess = rl.keyIn("\nDo you pick heads or tails? (h/t) ", {
-    //   hideEchoBack: false,
-    //   mask: "",
-    //   limit: "ht",
-    // });
-    playerGuess = playerInput === "h" ? "heads" : "tails";
-
-    compGuess = Math.random() * 1 > 0.5 ? "heads" : "tails";
-  }
-  message =
-    `***The coin result is ${compGuess} and you guessed ${playerGuess}, you win :)***` +
-    winCoinFlip +
-    shinyCoinCollect +
-    tinyCreatureLeft;
-  items.push("shiny coin");
-
+  const playerInput = req.query.playerInput;
+  coinFlip(playerInput);
   res.send(message);
 });
 
