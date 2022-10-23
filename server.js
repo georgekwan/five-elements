@@ -1,5 +1,5 @@
-("use strict");
-import express from "express";
+('use strict');
+import express from 'express';
 
 import {
   eatMushYes,
@@ -11,41 +11,41 @@ import {
   crimsonNo,
   goRightYes,
   goRightNo,
-} from "./story.js";
+} from './story.js';
 
 import {
   coinFlip,
   diceRoll,
-  earthFireWater,
   coinFlipMessage,
   diceRollMessage,
   magicMessage,
-} from "./games.js";
+  fiveElements,
+} from './games.js';
 
 const app = express();
 const port = 4003;
 
 app.use(express.json()); // send array or object to the backend
 
-app.get("/gameStart", (req, res) => {
+app.get('/gameStart', (req, res) => {
   const message = gameStartStory;
   res.send(message);
 });
 
-app.get("/wokeUpHome", (req, res) => {
+app.get('/wokeUpHome', (req, res) => {
   const message = wokeUpHome;
   res.send(message);
 });
 
-app.get("/enterForest", (req, res) => {
+app.get('/enterForest', (req, res) => {
   const message = niceMushroom;
   res.send(message);
 });
 
-app.get("/eatMush", (req, res) => {
+app.get('/eatMush', (req, res) => {
   const answer = req.query.answer;
   let message;
-  if (answer === "y") {
+  if (answer === 'y') {
     message = eatMushYes;
   } else {
     message = eatMushNo;
@@ -53,10 +53,10 @@ app.get("/eatMush", (req, res) => {
   res.send(message);
 });
 
-app.get("/crimsonDoor", (req, res) => {
+app.get('/crimsonDoor', (req, res) => {
   const answer = req.query.answer;
   let message;
-  if (answer === "y") {
+  if (answer === 'y') {
     message = crimsonYes;
   } else {
     message = crimsonNo;
@@ -64,10 +64,10 @@ app.get("/crimsonDoor", (req, res) => {
   res.send(message);
 });
 
-app.get("/caveEntry", (req, res) => {
+app.get('/caveEntry', (req, res) => {
   const answer = req.query.answer;
   let message;
-  if (answer === "r") {
+  if (answer === 'r') {
     message = goRightYes;
   } else {
     message = goRightNo;
@@ -75,29 +75,29 @@ app.get("/caveEntry", (req, res) => {
   res.send(message);
 });
 
-app.get("/gameOneInstruc", (req, res) => {
+app.get('/gameOneInstruc', (req, res) => {
   const message = gameOneInstru;
   res.send(message);
 });
 
-app.get("/gameOne", (req, res) => {
-  const playerInput = req.query.playerInput;
-  console.log(playerInput);
-  coinFlip(playerInput);
-  res.send(coinFlipMessage);
-});
+// app.get("/gameOne", (req, res) => {
+//   const playerInput = req.query.playerInput;
+//   console.log(playerInput);
+//   coinFlip(playerInput);
+//   res.send(coinFlipMessage);
+// });
 
-app.get("/gameTwo", (req, res) => {
-  const playerInput = req.query.playerInput;
-  console.log(playerInput);
-  diceRoll();
-  res.send(diceRollMessage);
-});
+// app.get("/gameTwo", (req, res) => {
+//   const playerInput = req.query.playerInput;
+//   console.log(playerInput);
+//   diceRoll();
+//   res.send(diceRollMessage);
+// });
 
-app.get("/gameThree", (req, res) => {
+app.get('/gameThree', (req, res) => {
   const gamerInput = req.query.playerInput;
   console.log(gamerInput);
-  earthFireWater(gamerInput);
+  fiveElements(gamerInput);
   res.send(magicMessage);
 });
 

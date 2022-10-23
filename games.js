@@ -1,12 +1,11 @@
-("use strict");
-import { winCoinFlip, shinyCoinCollect, tinyCreatureLeft } from "./story.js";
-import chalk from "chalk";
+('use strict');
+import { winCoinFlip, shinyCoinCollect, tinyCreatureLeft } from './story.js';
+import chalk from 'chalk';
 export let coinFlipMessage, diceRollMessage, magicMessage;
-export let items = [];
 
 export function coinFlip(playerInput) {
-  let playerGuess = playerInput === "h" ? "heads" : "tails";
-  let compGuess = Math.random() > 0.5 ? "heads" : "tails";
+  let playerGuess = playerInput === 'h' ? 'heads' : 'tails';
+  let compGuess = Math.random() > 0.5 ? 'heads' : 'tails';
   console.log(chalk.blue.bold(`You guess: ${playerGuess}`));
   console.log(chalk.red.bold(`The coin flip result is: ${compGuess}`));
   if (playerGuess !== compGuess) {
@@ -24,16 +23,15 @@ export function coinFlip(playerInput) {
     console.log(chalk.green.bold(coinFlipMessage));
     return 1;
   }
-  console.log(coinFlipMessage);
 }
 export function diceRoll() {
   let playerRoll = Math.floor(Math.random() * 40 + 1);
   let compRoll = Math.floor(Math.random() * 40 + 1);
-  console.log("Player " + playerRoll + " vs." + "Grumpy " + compRoll);
+  console.log('Player ' + playerRoll + ' vs.' + 'Grumpy ' + compRoll);
 
   if (playerRoll === compRoll) {
     diceRollMessage = `*** Grumpy's dice result is ${compRoll} but your roll is ${playerRoll}, it is a draw, try again :O ***`;
-    console.log(chalk.gray.bold(diceRollMessage));
+    console.log(chalk.yellow.bold(diceRollMessage));
     return 0;
   } else if (playerRoll < compRoll) {
     diceRollMessage = `--- Grumpy's dice result is ${compRoll} but your roll is ${playerRoll}, try again :( ---`;
@@ -41,55 +39,66 @@ export function diceRoll() {
     return 1;
   } else {
     diceRollMessage = `+++ Grumpy's dice result is ${compRoll} and your roll is ${playerRoll}, you win :) +++`;
-    items.push("golden collar");
+
     console.log(chalk.green.bold(diceRollMessage));
     return 2;
   }
 }
 
-export function earthFireWater(gamerInput) {
+export function fiveElements(gamerInput) {
   const getUserChoice = () => {
     // gamerInput = gamerInput();
     switch (gamerInput) {
-      case "e":
-        return "earth";
+      case 'e':
+        return 'earth';
         break;
-      case "w":
-        return "water";
+      case 'w':
+        return 'water';
         break;
-      case "f":
-        return "fire";
+      case 'f':
+        return 'fire';
         break;
-      case "b":
-        return "bomb";
+      case 'd':
+        return 'wind';
+        break;
+      case 'l':
+        return 'lightning';
+        break;
+      case 'b':
+        return 'bomb';
         break;
     }
   };
   function getComputerChoice() {
-    const randomNumber = Math.floor(Math.random() * 3);
+    const randomNumber = Math.floor(Math.random() * 5);
     switch (randomNumber) {
       case 0:
-        return "earth";
+        return 'earth';
         break;
       case 1:
-        return "water";
+        return 'water';
         break;
       case 2:
-        return "fire";
+        return 'fire';
+        break;
+      case 3:
+        return 'wind';
+        break;
+      case 4:
+        return 'lightning';
         break;
     }
   }
 
   function determineWinner(userChoice, compChoice) {
-    // let magicMessage;
     if (userChoice === compChoice) {
       magicMessage = `*** You were both using ${userChoice}. It is a draw; try again :O ***`;
-      console.log(chalk.gray.bold(magicMessage));
+      console.log(chalk.yellow.bold(magicMessage));
       return 0;
     }
 
-    if (userChoice === "earth") {
-      if (compChoice === "fire") {
+    if (userChoice === 'earth' || userChoice === 'wind') {
+      if (compChoice === 'fire') {
         magicMessage = `--- Ouch! Raizel burnt you with ${compChoice} :( ---`;
         console.log(chalk.red.bold(magicMessage));
         return 1;
@@ -99,9 +108,9 @@ export function earthFireWater(gamerInput) {
         return 2;
       }
     }
-    if (userChoice === "water") {
-      if (compChoice === "earth") {
-        magicMessage = `--- Ouch! Raizel assorbed your ${userChoice} with ${compChoice} :( ---`;
+    if (userChoice === 'water' || userChoice === 'wind') {
+      if (compChoice === 'earth') {
+        magicMessage = `--- Ouch! Raizel assorbed your ${userChoice} element with ${compChoice} :( ---`;
         console.log(chalk.red.bold(magicMessage));
         return 1;
       } else {
@@ -110,8 +119,8 @@ export function earthFireWater(gamerInput) {
         return 2;
       }
     }
-    if (userChoice === "fire") {
-      if (compChoice === "water") {
+    if (userChoice === 'fire' || userChoice === 'lightning') {
+      if (compChoice === 'water') {
         magicMessage = `--- Ouch! Raizel putted out your ${userChoice} with ${compChoice} :( ---`;
         console.log(chalk.red.bold(magicMessage));
         return 1;
@@ -121,21 +130,43 @@ export function earthFireWater(gamerInput) {
         return 2;
       }
     }
-
-    if (userChoice === "bomb") {
+    if (userChoice === 'earth' || userChoice === 'fire') {
+      if (compChoice === 'lightning') {
+        magicMessage = `--- Ouch! You took some damaged from Raizel's ${compChoice} element :( ---`;
+        console.log(chalk.red.bold(magicMessage));
+        return 1;
+      } else {
+        magicMessage = `+++ Great job!!! You knocked down Raizel with your ${userChoice} power!!! +++`;
+        console.log(chalk.green.bold(magicMessage));
+        return 2;
+      }
+    }
+    if (userChoice === 'lightning' || userChoice === 'water') {
+      if (compChoice === 'wind') {
+        magicMessage = `--- Ouch! You took some damaged from Raizel's ${compChoice} element :( ---`;
+        console.log(chalk.red.bold(magicMessage));
+        return 1;
+      } else {
+        magicMessage = `+++ Great job!!! Raizel was striked by your ${userChoice}!!! +++`;
+        console.log(chalk.green.bold(magicMessage));
+        return 2;
+      }
+    }
+    if (userChoice === 'bomb') {
       magicMessage = `++++ Raizel was severely injured by your ${userChoice}. ++++`;
       console.log(chalk.green.bold(magicMessage));
-      return 1;
+      return 2;
     }
   }
-
+  const userChoice = getUserChoice();
+  const compChoice = getComputerChoice();
   function playGame() {
-    const userChoice = getUserChoice();
-    const compChoice = getComputerChoice();
-    console.log(`\nChubby threw: ${userChoice}`);
-    console.log(`\nRaizel threw: ${compChoice}`);
-    magicMessage;
-    console.log(magicMessage);
+    // const userChoice = getUserChoice();
+    // const compChoice = getComputerChoice();
+    console.log(chalk.blackBright.bold(`\nChubby threw: ${userChoice}`));
+    console.log(chalk.blackBright.bold(`\nRaizel threw: ${compChoice}`));
+
+    // console.log(magicMessage);
     // console.log(determineWinner(userChoice, compChoice));
     return determineWinner(userChoice, compChoice);
   }

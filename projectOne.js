@@ -46,12 +46,12 @@ export function lookMom() {
 export function enterForest() {
   niceMushroom(); //return strings
   
-console.log("\n----------------\nThe commands are (y)es or (n)o";)
-  let eatMush = rl.keyIn("\nAre you eating that beautiful mushroom?! (y/n) ", {
-    hideEchoBack: false,
-    mask: "",
-    limit: "yn",
-  });
+// console.log("\n----------------\nThe commands are (y)es or (n)o";)
+//   let eatMush = rl.keyIn("\nAre you eating that beautiful mushroom?! (y/n) ", {
+//     hideEchoBack: false,
+//     mask: "",
+//     limit: "yn",
+//   });
   console.log("\n");
 
   if (eatMush === "y") {
@@ -64,12 +64,12 @@ console.log("\n----------------\nThe commands are (y)es or (n)o";)
 
 export function massiveTree() {
   
-  console.log("\n----------------\nThe commands are (y)es or (n)o")
-  let crimsonDoor = rl.keyIn("\nDo you want to knock? (y/n) ", {
-    hideEchoBack: false,
-    mask: "",
-    limit: "yn",
-  });
+  // console.log("\n----------------\nThe commands are (y)es or (n)o")
+  // let crimsonDoor = rl.keyIn("\nDo you want to knock? (y/n) ", {
+  //   hideEchoBack: false,
+  //   mask: "",
+  //   limit: "yn",
+  // });
 
   if (crimsonDoor === "y") {
     crimsonYes();
@@ -101,7 +101,7 @@ export function caveEntry() {
    
 }
 
-export function challengeOne() {
+function challengeOne() {
   console.log(
     `\nTiny creature: The game is simple. It's heads or tails. To win, you must guess right twice.`
   );
@@ -144,7 +144,7 @@ export function challengeOne() {
   
 }
 // last left off
-export function challengeTwo() {
+function challengeTwo() {
   let fightflee;
   do {
     console.log(`\nA Grumpy creature appears.
