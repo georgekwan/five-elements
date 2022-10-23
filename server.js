@@ -1,6 +1,5 @@
 import express from "express";
 
-// import { gameStart } from "./projectOne.js";
 import {
   eatMushYes,
   eatMushNo,
@@ -11,12 +10,16 @@ import {
   crimsonNo,
   goRightYes,
   goRightNo,
-  winCoinFlip,
-  shinyCoinCollect,
-  tinyCreatureLeft,
 } from "./story.js";
 
-import { coinFlip, message } from "./games.js";
+import {
+  coinFlip,
+  diceRoll,
+  earthFireWater,
+  coinFlipMessage,
+  diceRollMessage,
+  magicMessage,
+} from "./games.js";
 
 const app = express();
 const port = 4003;
@@ -79,8 +82,22 @@ app.get("/gameOneInstruc", (req, res) => {
 app.get("/gameOne", (req, res) => {
   const playerInput = req.query.playerInput;
   console.log(playerInput);
-  coinFlip(playerInput)
-  res.json(message);
+  coinFlip(playerInput);
+  res.send(coinFlipMessage);
+});
+
+app.get("/gameTwo", (req, res) => {
+  const playerInput = req.query.playerInput;
+  console.log(playerInput);
+  diceRoll();
+  res.send(diceRollMessage);
+});
+
+app.get("/gameThree", (req, res) => {
+  const gamerInput = req.query.playerInput;
+  console.log(gamerInput);
+  earthFireWater(gamerInput);
+  res.send(magicMessage);
 });
 
 app.listen(port, () => console.log(`My game server running on port ${port}!`));

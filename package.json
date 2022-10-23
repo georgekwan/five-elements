@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/georgekwan/chubbyAdventure#readme",
   "dependencies": {
+    "chalk": "^5.1.2",
     "express": "^4.18.2",
     "node-fetch": "^3.2.10",
     "readline-sync": "^1.4.10"
