@@ -32,15 +32,15 @@ export function diceRoll() {
   console.log("Player " + playerRoll + " vs." + "Grumpy " + compRoll);
 
   if (playerRoll === compRoll) {
-    diceRollMessage = `***Grumpy's dice result is ${compRoll} but your roll is ${playerRoll}, it is a draw, try again :(***`;
+    diceRollMessage = `*** Grumpy's dice result is ${compRoll} but your roll is ${playerRoll}, it is a draw, try again :O ***`;
     console.log(chalk.gray.bold(diceRollMessage));
     return 0;
   } else if (playerRoll < compRoll) {
-    diceRollMessage = `***Grumpy's dice result is ${compRoll} but your roll is ${playerRoll}, try again :(***`;
+    diceRollMessage = `--- Grumpy's dice result is ${compRoll} but your roll is ${playerRoll}, try again :( ---`;
     console.log(chalk.red.bold(diceRollMessage));
     return 1;
   } else {
-    diceRollMessage = `***Grumpy's dice result is ${compRoll} and your roll is ${playerRoll}, you win :)***`;
+    diceRollMessage = `+++ Grumpy's dice result is ${compRoll} and your roll is ${playerRoll}, you win :) +++`;
     items.push("golden collar");
     console.log(chalk.green.bold(diceRollMessage));
     return 2;
@@ -83,7 +83,7 @@ export function earthFireWater(gamerInput) {
   function determineWinner(userChoice, compChoice) {
     // let magicMessage;
     if (userChoice === compChoice) {
-      magicMessage = `*** You were both using ${userChoice}. It is a draw; try again :o ***`;
+      magicMessage = `*** You were both using ${userChoice}. It is a draw; try again :O ***`;
       console.log(chalk.gray.bold(magicMessage));
       return 0;
     }
