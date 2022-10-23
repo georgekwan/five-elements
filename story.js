@@ -35,3 +35,16 @@ export const shinyCoinCollect = `\n***You have collected a shiny coin***\n`;
 
 export const tinyCreatureLeft =
   "\nThe tiny creature vanished with a poof! And you keep going down into the gloomy tunnel.\n";
+
+export const grumpyAppears = `\nA Grumpy creature appears.
+  \nGrumpy creature: Stop, you! I have to catch you so that Raizel will reward me.\n`;
+
+export const runAway = `\nYou tried to go back to where you came from, but the place seemed familiar, and the Grumpy creature appeared to be no longer after you.\n`;
+
+export const enterFight = `\nSo you choose to fight. To win, you must win three games of Rock, Paper, Scissors. If you win, you will receive an item; if you lose, one of your items will be removed.\n`;
+
+export const diceRollLoss = `\nFortunately, the Grumpy Creature was so delighted about stealing your coin that it forgot about catching you.\n`;
+
+export const diceRollWin = `\nThe Grumpy Creature disappear and it has dropped an item.\n*** You collected a golden collar ***\n`;
+
+export const enterTunnel = `\nTrying to find the exit, you descend further into the tunnel.\nYou could hear the music increasing louder as you continued on.\n`;
