@@ -1,9 +1,9 @@
-('use strict');
+'use strict';
 import fetch from 'node-fetch';
 import rl from 'readline-sync';
 import cfonts from 'cfonts';
 import chalk from 'chalk';
-import { coinFlip, diceRoll, fiveElements } from './games.js';
+// import { coinFlip, diceRoll, fiveElements } from './games.js';
 
 let gameOneResult;
 let gameTwoResult;
@@ -28,8 +28,8 @@ do {
   });
 
   fetch('http://localhost:4003/gameOne?playerInput=' + playerInput)
-    .then((response) => response.json())
-    .then((json) => console.log(json));
+    .then(response => response.json())
+    .then(json => console.log(json));
   gameOneResult = coinFlip(playerInput.toLowerCase);
   if (gameOneResult === 1) {
     items.push('gold coin');
@@ -52,8 +52,8 @@ do {
   });
 
   fetch('http://localhost:4003/gameTwo?playerInput=' + playerInput)
-    .then((response) => response.json())
-    .then((json) => console.log(json));
+    .then(response => response.json())
+    .then(json => console.log(json));
   gameTwoResult = diceRoll(playerInput.toLowerCase);
   if (gameTwoResult === 2) {
     items.push('golden collar');
@@ -84,8 +84,8 @@ do {
   );
 
   fetch('http://localhost:4003/gameThree?playerInput=' + playerInput)
-    .then((response) => response.json())
-    .then((json) => console.log(json));
+    .then(response => response.json())
+    .then(json => console.log(json));
   gameThreeResult = fiveElements(playerInput);
   // console.log(playerInput);
   // console.log(gameThreeResult);

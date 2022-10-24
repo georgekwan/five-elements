@@ -1,4 +1,4 @@
-('use strict');
+'use strict';
 import { winCoinFlip, shinyCoinCollect, tinyCreatureLeft } from './story.js';
 import chalk from 'chalk';
 export let coinFlipMessage, diceRollMessage, magicMessage;

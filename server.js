@@ -1,4 +1,4 @@
-('use strict');
+'use strict';
 import express from 'express';
 
 import {
@@ -25,7 +25,19 @@ import {
 const app = express();
 const port = 4003;
 
+const playerName = 'some one koo';
+
 app.use(express.json()); // send array or object to the backend
+
+app.post('/playerName', (req, res) => {
+  res.send(playerName);
+});
+
+app.get('/playerName', (req, res) => {
+  const playerName = req.body;
+  playerName;
+  res.send();
+});
 
 app.get('/gameStart', (req, res) => {
   const message = gameStartStory;
@@ -80,19 +92,19 @@ app.get('/gameOneInstruc', (req, res) => {
   res.send(message);
 });
 
-// app.get("/gameOne", (req, res) => {
-//   const playerInput = req.query.playerInput;
-//   console.log(playerInput);
-//   coinFlip(playerInput);
-//   res.send(coinFlipMessage);
-// });
+app.get('/gameOne', (req, res) => {
+  const playerInput = req.query.playerInput;
+  console.log(playerInput);
+  coinFlip(playerInput);
+  res.send(coinFlipMessage);
+});
 
-// app.get("/gameTwo", (req, res) => {
-//   const playerInput = req.query.playerInput;
-//   console.log(playerInput);
-//   diceRoll();
-//   res.send(diceRollMessage);
-// });
+app.get('/gameTwo', (req, res) => {
+  const playerInput = req.query.playerInput;
+  console.log(playerInput);
+  diceRoll();
+  res.send(diceRollMessage);
+});
 
 app.get('/gameThree', (req, res) => {
   const gamerInput = req.query.playerInput;
