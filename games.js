@@ -58,16 +58,7 @@ export function diceRoll() {
 }
 
 export function fiveElements(gamerInput) {
-  // associative array if possible
-  // let getUserChoice = {
-  //   "e" => 'earth',
-  //   "w"=> 'water',
-  //   "f"=> 'fire',
-  //   "d"=> 'wind',
-  //   "l"=> 'lightning',
-  //   "b"=> 'bomb',
-  // };
-  // return getUserChoice[gamerInput];
+ 
 
   function getUserChoice() {
     switch (gamerInput) {
@@ -119,86 +110,3 @@ export function fiveElements(gamerInput) {
     userChoice: getUserChoice(),
     compChoice: getComputerChoice(),
   };
-
-  // function determineWinner(userChoice, compChoice) {
-  //   if (userChoice === compChoice) {
-  //     magicMessage = `*** You were both using ${userChoice}. It is a draw; try again :O ***`;
-  //     console.log(chalk.yellow.bold(magicMessage));
-  //     return 0;
-  //   }
-
-  //   if (userChoice === 'earth' || userChoice === 'wind') {
-  //     if (compChoice === 'fire') {
-  //       magicMessage = `--- Ouch! Raizel burnt you with ${compChoice} :( ---`;
-  //       console.log(chalk.red.bold(magicMessage));
-  //       return 1;
-  //     } else {
-  //       magicMessage = `+++ Great job!!! Raizel is now in pain because you used ${userChoice} on her!!! +++`;
-  //       console.log(chalk.green.bold(magicMessage));
-  //       return 2;
-  //     }
-  //   }
-  //   if (userChoice === 'water' || userChoice === 'wind') {
-  //     if (compChoice === 'earth') {
-  //       magicMessage = `--- Ouch! Raizel assorbed your ${userChoice} element with ${compChoice} :( ---`;
-  //       console.log(chalk.red.bold(magicMessage));
-  //       return 1;
-  //     } else {
-  //       magicMessage = `+++ Great job!!! You used ${userChoice} to knock Raizel out!!! +++`;
-  //       console.log(chalk.green.bold(magicMessage));
-  //       return 2;
-  //     }
-  //   }
-  //   if (userChoice === 'fire' || userChoice === 'lightning') {
-  //     if (compChoice === 'water') {
-  //       magicMessage = `--- Ouch! Raizel putted out your ${userChoice} with ${compChoice} :( ---`;
-  //       console.log(chalk.red.bold(magicMessage));
-  //       return 1;
-  //     } else {
-  //       magicMessage = `+++ Great job!!! Raizel was burned because you threw ${userChoice} at her!!! +++`;
-  //       console.log(chalk.green.bold(magicMessage));
-  //       return 2;
-  //     }
-  //   }
-  //   if (userChoice === 'earth' || userChoice === 'fire') {
-  //     if (compChoice === 'lightning') {
-  //       magicMessage = `--- Ouch! You took some damaged from Raizel's ${compChoice} element :( ---`;
-  //       console.log(chalk.red.bold(magicMessage));
-  //       return 1;
-  //     } else {
-  //       magicMessage = `+++ Great job!!! You knocked down Raizel with your ${userChoice} power!!! +++`;
-  //       console.log(chalk.green.bold(magicMessage));
-  //       return 2;
-  //     }
-  //   }
-  //   if (userChoice === 'lightning' || userChoice === 'water') {
-  //     if (compChoice === 'wind') {
-  //       magicMessage = `--- Ouch! You took some damaged from Raizel's ${compChoice} element :( ---`;
-  //       console.log(chalk.red.bold(magicMessage));
-  //       return 1;
-  //     } else {
-  //       magicMessage = `+++ Great job!!! Raizel was striked by your ${userChoice}!!! +++`;
-  //       console.log(chalk.green.bold(magicMessage));
-  //       return 2;
-  //     }
-  //   }
-  //   if (userChoice === 'bomb') {
-  //     magicMessage = `++++ Raizel was severely injured by your ${userChoice}. ++++`;
-  //     console.log(chalk.green.bold(magicMessage));
-  //     return 2;
-  //   }
-  // }
-  // const userChoice = getUserChoice();
-  // const compChoice = getComputerChoice();
-  // function playGame() {
-  // const userChoice = getUserChoice();
-  // const compChoice = getComputerChoice();
-  // console.log(chalk.blackBright.bold(`\nChubby threw: ${userChoice}`));
-  // console.log(chalk.blackBright.bold(`\nRaizel threw: ${compChoice}`));
-  //
-  // console.log(magicMessage);
-  // console.log(determineWinner(userChoice, compChoice));
-  //   return determineWinner(userChoice, compChoice);
-  // }
-  // return playGame();
-}
