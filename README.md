@@ -4,7 +4,7 @@ Open the terminal with VS code or Git Bash
 To start the server npm run start
 
 To start the front-end client node
-Go to: C:\inceptionu\chubbyAdventure
+Go to the game folder
 Enter: node index.js (windows)
 
 WALKTHROUGH :
@@ -18,3 +18,17 @@ Water beats Lightning and Fire
 Fire beats Earth and Wind
 Lightning beats Fire and Earth
 Wind beats Lightning and Water
+
+Game commands:
+(e)arth
+(f)ire
+(w)ater
+(l)ightning
+win(d)
+
+Additional commands:
+(f)orfeit - forfeit the round
+(e)xit - exit the game
+
+Cheat commands:
+(b)omb - wins the round
