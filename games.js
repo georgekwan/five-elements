@@ -1,9 +1,9 @@
 'use strict';
-import { winCoinFlip, shinyCoinCollect, tinyCreatureLeft } from './story.js';
+
 import chalk from 'chalk';
 export let diceRollMessage, magicMessage;
 
-let playerInput = 'h';
+let playerInput;
 export let playerGuess = playerInput === 'h' ? 'heads' : 'tails';
 export let compGuess = Math.random() > 0.5 ? 'heads' : 'tails';
 
@@ -40,26 +40,9 @@ export function diceRoll() {
     playerRoll: playerRoll,
     compRoll: compRoll,
   };
-
-  // if (playerRoll === compRoll) {
-  //   diceRollMessage = `*** Grumpy's dice result is ${compRoll} but your roll is ${playerRoll}, it is a draw, try again :O ***`;
-  //   console.log(chalk.yellow.bold(diceRollMessage));
-  //   return 0;
-  // } else if (playerRoll < compRoll) {
-  //   diceRollMessage = `--- Grumpy's dice result is ${compRoll} but your roll is ${playerRoll}, try again :( ---`;
-  //   console.log(chalk.red.bold(diceRollMessage));
-  //   return 1;
-  // } else {
-  //   diceRollMessage = `+++ Grumpy's dice result is ${compRoll} and your roll is ${playerRoll}, you win :) +++`;
-
-  //   console.log(chalk.green.bold(diceRollMessage));
-  //   return 2;
-  // }
 }
 
 export function fiveElements(gamerInput) {
- 
-
   function getUserChoice() {
     switch (gamerInput) {
       case 'e':
@@ -76,6 +59,9 @@ export function fiveElements(gamerInput) {
         break;
       case 'l':
         return 'lightning';
+        break;
+      case 'o':
+        return 'forfeit';
         break;
       case 'b':
         return 'bomb';
@@ -110,3 +96,4 @@ export function fiveElements(gamerInput) {
     userChoice: getUserChoice(),
     compChoice: getComputerChoice(),
   };
+}
