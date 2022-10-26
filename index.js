@@ -23,7 +23,7 @@ async function fiveElementClient() {
   });
 
   let playerInput = rl.keyIn(
-    '\nSelect: (e)arth - (f)ire - (w)ater - (l)ightning - win(d)\nTo exit the game enter (x) \n\nWhich element would you like to use? (e/f/w/l/d/x) ',
+    '\nSelect: (e)arth - (f)ire - (w)ater - (l)ightning - win(d)\nTo forfeit the round enter (o)\nTo exit the game enter (x) \n\nWhich element would you like to use? (e/f/w/l/d/f/x) ',
     {
       hideEchoBack: false,
       mask: '',

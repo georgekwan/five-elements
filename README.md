@@ -27,7 +27,7 @@ Game commands:
 win(d)
 
 Additional commands:
-(f)orfeit - forfeit the round
+f(o)rfeit - forfeit the round
 (e)xit - exit the game
 
 Cheat commands:
