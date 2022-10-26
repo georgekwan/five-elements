@@ -3,7 +3,7 @@
 import chalk from 'chalk';
 export let diceRollMessage, magicMessage;
 
-let playerInput;
+let playerInput = 'h';
 export let playerGuess = playerInput === 'h' ? 'heads' : 'tails';
 export let compGuess = Math.random() > 0.5 ? 'heads' : 'tails';
 

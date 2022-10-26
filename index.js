@@ -34,8 +34,9 @@ async function fiveElementClient() {
     keepPlaying = false;
     return;
   }
+
   const response = await fetch(
-    `http://localhost:4003/gameThree?playerInput=` + playerInput
+    `http://localhost:4080/gameThree?playerInput=` + playerInput
   );
   if (response.status !== 200) {
     console.log('That is not a valid key');
@@ -46,7 +47,7 @@ async function fiveElementClient() {
 
   gameDecision(result);
 }
-// fiveElementClient();
+
 async function mainLoop() {
   while (keepPlaying && goldCoins.length > 0) {
     await fiveElementClient();
@@ -114,10 +115,8 @@ function gameDecision(rs) {
   function countGoldCoins() {
     const winners = determineWinner();
     if (winners >= 30 && winners <= 800) {
-      // console.log('***test winner***');
       goldCoins.push('0');
     } else {
-      // console.log('***test loser***');
       goldCoins.pop();
     }
     console.log(chalk.yellow.bold(`\nGold coin: ${goldCoins}`));
