@@ -140,53 +140,11 @@ function gameDecision(rs) {
     gameMessages[777] = `\n++++ Boom!!! Raizel was severely injured by your ${rs.userChoice}. ++++`;
     gameMessages[11] = `\n--- You decided to forfeit the game :( ---`;
 
-    function gameResultMessage() {
-      switch (determineWinner(rs)) {
-        case 999:
-          return gameMessages[999];
-          break;
-        case 12:
-          return gameMessages[12];
-          break;
-        case 32:
-          return gameMessages[32];
-          break;
-        case 13:
-          return gameMessages[13];
-          break;
-        case 33:
-          return gameMessages[33];
-          break;
-        case 14:
-          return gameMessages[14];
-          break;
-        case 34:
-          return gameMessages[34];
-          break;
-        case 15:
-          return gameMessages[15];
-          break;
-        case 35:
-          return gameMessages[35];
-          break;
-        case 16:
-          return gameMessages[16];
-          break;
-        case 36:
-          return gameMessages[36];
-          break;
-        case 777:
-          return gameMessages[777];
-          break;
-        case 11:
-          return gameMessages[11];
-          break;
-      }
-    }
-
-    return chalk.bold(gameMessages[determineWinner()]);
+    let gameResultMessage = gameMessages[determineWinner(rs)];
+    return chalk.bold(gameResultMessage);
   }
 
   console.log(gameMessageOutput());
+
   // console.log(determineWinner());
 }
