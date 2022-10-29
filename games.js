@@ -16,7 +16,7 @@ export function fiveElements(gamerInput) {
     };
     return elementChoice[gamerInput];
   }
-  // use random array if possible
+
   function getComputerChoice() {
     const randomNumber = Math.floor(Math.random() * 5);
     const compRandomChoice = {
