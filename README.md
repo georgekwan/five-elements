@@ -1,4 +1,4 @@
-# chubbyAdventure
+# five-elements
 
 Open the terminal with VS code or Git Bash
 To start the server npm run start
