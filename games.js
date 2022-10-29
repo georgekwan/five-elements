@@ -4,29 +4,17 @@ import chalk from 'chalk';
 
 export function fiveElements(gamerInput) {
   function getUserChoice() {
-    switch (gamerInput) {
-      case 'e':
-        return 'earth';
-        break;
-      case 'w':
-        return 'water';
-        break;
-      case 'f':
-        return 'fire';
-        break;
-      case 'd':
-        return 'wind';
-        break;
-      case 'l':
-        return 'lightning';
-        break;
-      case 'o':
-        return 'forfeit';
-        break;
-      case 'b':
-        return 'bomb';
-        break;
-    }
+    // prettier-ignore
+    const elementChoice = {
+      'e': 'earth',
+      'w': 'water',
+      'f': 'fire',
+      'd': 'wind',
+      'l': 'lightning',
+      'o': 'forfeit',
+      'b': 'bomb',
+    };
+    return elementChoice[gamerInput];
   }
   // use random array if possible
   function getComputerChoice() {
@@ -48,4 +36,3 @@ export function fiveElements(gamerInput) {
     compChoice: getComputerChoice(),
   };
 }
-fiveElements('f');
