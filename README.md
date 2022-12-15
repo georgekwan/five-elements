@@ -13,11 +13,11 @@ Each element wins against 2 others
 
 A Simple Way to Remember Who Wins
 
-Earth beats Water and Wind
-Water beats Lightning and Fire
-Fire beats Earth and Wind
-Lightning beats Fire and Earth
-Wind beats Lightning and Water
+Earth beats Water or Wind
+Water beats Lightning or Fire
+Fire beats Earth or Wind
+Lightning beats Fire or Earth
+Wind beats Lightning or Water
 
 Game commands:
 (e)arth
