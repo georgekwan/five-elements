@@ -19,7 +19,7 @@
   },
   "homepage": "https://github.com/georgekwan/chubbyAdventure#readme",
   "dependencies": {
-    "cfonts": "^3.1.1",
+    "cfonts": "^3.2.0",
     "chalk": "^5.1.2",
     "express": "^4.18.2",
     "node-fetch": "^3.2.10",
